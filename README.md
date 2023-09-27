@@ -6,3 +6,7 @@ I wanted to use an 8 digit 7-segment LED Tube on my ESP32 project but could not 
 Soooo...  I wrote my own - maybe it will help, or at least, make life easier others...
 
 The ".h" file is the best reference on using it.  It should pick up the board type automatically from the IDE.
+
+## djrm: 27 September 2023
+
+Fixup for rp2040 on arduino and platformio

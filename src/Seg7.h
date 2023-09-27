@@ -5,8 +5,7 @@
 #include <Arduino.h>
 
 #define DELAY( x ) delay( x )
-#define BD_FAMILY " !! UNKNOWN BOARD !! "
- 	
+	
 #ifdef ESP32
 	#define MAX7219_DIN	18
 	#define MAX7219_CS	23
@@ -31,10 +30,22 @@
 #endif
 
 #ifdef ESP8266
-	#define MAX7219_DIN	13 	// D7
-	#define MAX7219_CS	15  // D8
-	#define MAX7219_CLK	14  // D5                                                                                                                                                                         
-	#define BD_FAMILY "ESP8266"
+	#define MAX7219_DIN	D7  //  13
+	#define MAX7219_CS	D8  //  15
+	#define MAX7219_CLK	D5  //  14
+//	#define BD_FAMILY "ESP8266"
+#endif
+
+#ifdef ARDUINO_ARCH_RP2040
+// used on Feather RP20040
+//	#define MAX7219_DIN	19
+//	#define MAX7219_CS	13
+//	#define MAX7219_CLK	18
+// used on PICO RP2040 multi pwm
+	#define MAX7219_DIN	19
+	#define MAX7219_CS	17
+	#define MAX7219_CLK	18
+	#define BD_FAMILY "RP2040"
 #endif
 
 #define DecodeMODE_REG	0x09
@@ -43,7 +54,7 @@
 #define ShutDown_REG	0x0C
 #define DisplayTEST_REG	0x0F
 
-// #define DEBUG  //  uncomment to see Debug Output in the Serial Monitor
+//#define DEBUG  //  uncomment to see Debug Output in the Serial Monitor
 	
 class Seg7 {
 
